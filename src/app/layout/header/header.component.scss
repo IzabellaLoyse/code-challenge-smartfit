@@ -1,0 +1,59 @@
+@import "../../../styles/variables.scss";
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100vw;
+
+  &__logo {
+    align-items: center;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+
+    img {
+      width: 8rem;
+    }
+  }
+}
+
+.header-details {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 4.25rem;
+
+  &__description {
+    color: map-get($colors, "light-grey");
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    max-width: 900px;
+  }
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.25rem;
+  min-width: 100vw;
+
+  &__title {
+    color: map-get($colors, "dark-grey");
+    font-size: 2rem;
+    font-weight: 700;
+    max-width: 180px;
+  }
+
+  &__separator {
+    background-color: map-get($colors, "dark-grey");
+    height: 7px;
+    width: 77px;
+  }
+}
