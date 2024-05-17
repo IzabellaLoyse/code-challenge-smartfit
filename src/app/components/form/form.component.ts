@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,6 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
   public results = [];
+  public form!: FormGroup;
 
-  public ngOnInit(): void {}
+  constructor(private formBuilder: FormBuilder) {}
+
+  public ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      hour: '',
+      showClosed: false,
+    });
+  }
+
+  public onSubmit(): void {}
+
+  public onClear(): void {
+    this.form.reset();
+  }
 }

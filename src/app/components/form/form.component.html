@@ -1,4 +1,4 @@
-<form class="form-group container-layout">
+<form class="form-group container-layout" [formGroup]="form">
   <div class="container-icon">
     <img
       src="/assets/icons/icon-hour.png"
@@ -14,10 +14,11 @@
     <div>
       <input
         type="radio"
-        name="morning"
+        name="hour"
         id="morning"
         value="morning"
         class="radio-wrapper__radio"
+        formControlName="hour"
       />
       <label for="morning">Manhã </label>
     </div>
@@ -28,10 +29,11 @@
     <div>
       <input
         type="radio"
-        name="afternoon"
+        name="hour"
         id="afternoon"
         value="afternoon"
         class="radio-wrapper__radio"
+        formControlName="hour"
       />
       <label for="afternoon">Tarde </label>
     </div>
@@ -42,10 +44,11 @@
     <div>
       <input
         type="radio"
-        name="night"
+        name="hour"
         id="night"
         value="night"
         class="radio-wrapper__radio"
+        formControlName="hour"
       />
       <label for="night">Noite </label>
     </div>
@@ -53,13 +56,16 @@
   </div>
 
   <div class="checkbox-wrapper">
-    <input
-      type="checkbox"
-      name="show-closed"
-      id="show-closed"
-      class="checkbox-wrapper__checkbox"
-    />
-    <label for="show-closed">Exibir unidades fechadas</label>
+    <div class="checkbox-container">
+      <input
+        type="checkbox"
+        name="showClosed"
+        id="showClosed"
+        class="checkbox-wrapper__checkbox"
+        formControlName="showClosed"
+      />
+      <label for="showClosed">Exibir unidades fechadas</label>
+    </div>
 
     <div class="container-results">
       <p>
@@ -69,7 +75,11 @@
   </div>
 
   <div class="buttons-wrapper">
-    <button type="submit" class="btn btn-primary">Encontrar unidade</button>
-    <button type="button" class="btn btn-secondary">Limpar</button>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+      Encontrar unidade
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="onClear()">
+      Limpar
+    </button>
   </div>
 </form>
