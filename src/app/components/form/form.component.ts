@@ -10,6 +10,7 @@ import { SmartUnitsService } from '../../services/smart-units.service';
 })
 export class FormComponent implements OnInit {
   public results: ILocation[] = [];
+  public filteredResults: ILocation[] = [];
   public form!: FormGroup;
 
   constructor(
@@ -20,15 +21,26 @@ export class FormComponent implements OnInit {
   public ngOnInit(): void {
     this.smartUnitsService.getUnits().subscribe((data) => {
       this.results = data.locations || [];
+      this.filteredResults = data.locations || [];
     });
 
     this.form = this.formBuilder.group({
       hour: '',
-      showClosed: false,
+      showClosed: true,
     });
   }
 
-  public onSubmit(): void {}
+  public onSubmit(): void {
+    const showClosedValue = this.form.get('showClosed')?.value;
+
+    if (!showClosedValue) {
+      this.filteredResults = this.results.filter(
+        (location) => location.opened === true
+      );
+    } else {
+      this.filteredResults = this.results;
+    }
+  }
 
   public onClear(): void {
     this.form.reset();
